@@ -473,6 +473,8 @@ module LLVM
 		attach_function :LLVMGetLastInstruction, [:pointer], :pointer
 		attach_function :LLVMGetNextInstruction, [:pointer], :pointer
 		attach_function :LLVMGetPreviousInstruction, [:pointer], :pointer
+		
+		attach_function :LLVMAddDestination, [:pointer, :pointer], :void
 
 		# Call sites
 		attach_function :LLVMSetInstructionCallConv, [:pointer, :call_conv], :void

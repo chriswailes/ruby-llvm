@@ -817,4 +817,14 @@ module LLVM
       C.LLVMAddCase(self, val, block)
     end
   end
+  
+  # @private
+  class IndirectBr < Instruction
+    # Adds a basic block references as a destination for this indirect branch.
+    def add_dest(dest)
+      C.LLVMAddDestination(self, dest)
+    end
+    
+    alias :<< :add_dest
+  end
 end

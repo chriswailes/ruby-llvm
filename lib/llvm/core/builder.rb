@@ -82,7 +82,7 @@ module LLVM
     # @return [LLVM::Instruction]
     # @LLVMinst br
     def ibr(addr, num_dests = 10)
-      Instruction.from_ptr(C.LLVMBuildIndirectBr(self, addr, num_dests))
+      IndirectBr.from_ptr(C.LLVMBuildIndirectBr(self, addr, num_dests))
     end
 
     # Conditional branching (i.e. if)
