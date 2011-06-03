@@ -1,52 +1,8 @@
 require 'llvm'
 require 'llvm/core'
-require 'llvm/target'
 require 'llvm/analysis'
 
 module LLVM
-  # @private
-  module C
-    # Generic values
-    attach_function :LLVMCreateGenericValueOfInt, [:pointer, :long_long, :int], :pointer
-    attach_function :LLVMCreateGenericValueOfPointer, [:pointer], :pointer
-    attach_function :LLVMCreateGenericValueOfFloat, [:pointer, :double], :pointer
-
-    attach_function :LLVMGenericValueIntWidth, [:pointer], :uint
-
-    attach_function :LLVMGenericValueToInt, [:pointer, :int], :long_long
-    attach_function :LLVMGenericValueToPointer, [:pointer], :pointer
-    attach_function :LLVMGenericValueToFloat, [:pointer, :pointer], :double
-    attach_function :LLVMDisposeGenericValue, [:pointer], :void
-
-    # Execution engines
-    attach_function :LLVMCreateExecutionEngineForModule, [:pointer, :pointer, :pointer], :int
-    attach_function :LLVMCreateInterpreterForModule, [:pointer, :pointer, :pointer], :int
-    attach_function :LLVMCreateJITCompilerForModule, [:pointer, :pointer, :uint, :pointer], :int
-    attach_function :LLVMDisposeExecutionEngine, [:pointer], :void
-
-    attach_function :LLVMRunStaticConstructors, [:pointer], :void
-    attach_function :LLVMRunStaticDestructors, [:pointer], :void
-
-    attach_function :LLVMRunFunctionAsMain, [:pointer, :pointer, :uint, :pointer, :pointer], :int
-    attach_function :LLVMRunFunction, [:pointer, :pointer, :uint, :pointer], :pointer
-
-    attach_function :LLVMFreeMachineCodeForFunction, [:pointer, :pointer], :void
-    attach_function :LLVMAddModuleProvider, [:pointer, :pointer], :void
-    attach_function :LLVMRemoveModuleProvider, [:pointer, :pointer, :pointer, :pointer], :int
-
-    attach_function :LLVMFindFunction, [:pointer, :pointer, :pointer, :pointer], :int
-
-    attach_function :LLVMGetExecutionEngineTargetData, [:pointer], :pointer
-
-    attach_function :LLVMAddGlobalMapping, [:pointer, :pointer, :pointer], :void
-
-    attach_function :LLVMGetPointerToGlobal, [:pointer, :pointer], :pointer
-
-    attach_function :LLVMInitializeX86TargetInfo, [], :void
-
-    attach_function :LLVMInitializeX86Target, [], :void
-  end
-
   def LLVM.init_x86
     LLVM::C.LLVMInitializeX86Target
     LLVM::C.LLVMInitializeX86TargetInfo

@@ -3,12 +3,6 @@ require 'llvm'
 require 'llvm/core'
 
 module LLVM
-  # @private
-  module C
-    attach_function :LLVMAddGlobalDCEPass, [:pointer], :void
-    attach_function :LLVMAddFunctionInliningPass, [:pointer], :void
-  end
-
   class PassManager
     # @LLVMpass gdce
     def gdce!

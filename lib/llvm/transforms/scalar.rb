@@ -2,31 +2,6 @@ require 'llvm'
 require 'llvm/core'
 
 module LLVM
-  # @private
-  module C
-    attach_function :LLVMAddAggressiveDCEPass, [:pointer], :void
-    attach_function :LLVMAddCFGSimplificationPass, [:pointer], :void
-    attach_function :LLVMAddDeadStoreEliminationPass, [:pointer], :void
-    attach_function :LLVMAddGVNPass, [:pointer], :void
-    attach_function :LLVMAddIndVarSimplifyPass, [:pointer], :void
-    attach_function :LLVMAddInstructionCombiningPass, [:pointer], :void
-    attach_function :LLVMAddJumpThreadingPass, [:pointer], :void
-    attach_function :LLVMAddLICMPass, [:pointer], :void
-    attach_function :LLVMAddLoopDeletionPass, [:pointer], :void
-    attach_function :LLVMAddLoopRotatePass, [:pointer], :void
-    attach_function :LLVMAddLoopUnrollPass, [:pointer], :void
-    attach_function :LLVMAddLoopUnswitchPass, [:pointer], :void
-    attach_function :LLVMAddMemCpyOptPass, [:pointer], :void
-    attach_function :LLVMAddPromoteMemoryToRegisterPass, [:pointer], :void
-    attach_function :LLVMAddReassociatePass, [:pointer], :void
-    attach_function :LLVMAddSCCPPass, [:pointer], :void
-    attach_function :LLVMAddScalarReplAggregatesPass, [:pointer], :void
-    attach_function :LLVMAddSimplifyLibCallsPass, [:pointer], :void
-    attach_function :LLVMAddTailCallEliminationPass, [:pointer], :void
-    attach_function :LLVMAddConstantPropagationPass, [:pointer], :void
-    attach_function :LLVMAddDemoteMemoryToRegisterPass, [:pointer], :void
-  end
-  
   class PassManager
     # @LLVMpass adce
     def adce!
