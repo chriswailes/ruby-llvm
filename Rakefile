@@ -84,10 +84,25 @@ task :check_bindings, :verbose do |t, args|
 		return
 	end
 	
-	# Grab library symbols.
+	# Grab libLLVM symbols.
 	lines = `#{bin} -t #{lib_path}`
 	
 	lsyms = lines.map do |l|
+		md = l.match(/\s(LLVM\w+)/)
+		if md then md[1] else nil end
+	end.compact.uniq
+	
+	# Grab libLLVM-EB symbols.
+	lib_path = "ext/libLLVM-EB-#{LLVM_TARGET_VERSION}.so"
+	
+	if not File.exists?(lib_path)
+		puts 'Extending Bindings shared library not present.'
+		return
+	end
+	
+	lines = `#{bin} -t #{lib_path}`
+	
+	lsyms |= lsyms = lines.map do |l|
 		md = l.match(/\s(LLVM\w+)/)
 		if md then md[1] else nil end
 	end.compact.uniq

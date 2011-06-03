@@ -10,4 +10,8 @@ module LLVM
 	require 'llvm/core/builder'
 	require 'llvm/core/pass_manager'
 	require 'llvm/core/bitcode'
+	
+	def LLVM::load_library(filename)
+		EB::LLVMLoadLibraryPermanently(filename)
+	end
 end

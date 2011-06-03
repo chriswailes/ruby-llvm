@@ -3,8 +3,16 @@ require 'ffi'
 
 module LLVM
 	# @private
-	module C
+	module EB
+		extend FFI::Library
 		
+		ffi_lib ['LLVM-EB-2.9', 'libLLVM-EB-2.9']
+		
+		attach_function :LLVMLoadLibraryPermanently, [:string], :bool
+	end
+	
+	# @private
+	module C
 		extend FFI::Library
 		
 		# Load the required library.
