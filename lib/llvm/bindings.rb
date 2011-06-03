@@ -334,12 +334,17 @@ module LLVM
 		attach_function :LLVMSizeOf, [:pointer], :pointer
 		attach_function :LLVMConstNeg, [:pointer], :pointer
 		attach_function :LLVMConstFNeg, [:pointer], :pointer
+		attach_function :LLVMConstNSWNeg, [:pointer], :pointer
+		attach_function :LLVMConstNUWNeg, [:pointer], :pointer
 		attach_function :LLVMConstNot, [:pointer], :pointer
 		attach_function :LLVMConstAdd, [:pointer, :pointer], :pointer
-		attach_function :LLVMConstNSWAdd, [:pointer, :pointer], :pointer
 		attach_function :LLVMConstFAdd, [:pointer, :pointer], :pointer
+		attach_function :LLVMConstNSWAdd, [:pointer, :pointer], :pointer
+		attach_function :LLVMConstNUWAdd, [:pointer, :pointer], :pointer
 		attach_function :LLVMConstSub, [:pointer, :pointer], :pointer
 		attach_function :LLVMConstFSub, [:pointer, :pointer], :pointer
+		attach_function :LLVMConstNSWSub, [:pointer, :pointer], :pointer
+		attach_function :LLVMConstNUWSub, [:pointer, :pointer], :pointer
 		attach_function :LLVMConstMul, [:pointer, :pointer], :pointer
 		attach_function :LLVMConstFMul, [:pointer, :pointer], :pointer
 		attach_function :LLVMConstUDiv, [:pointer, :pointer], :pointer
@@ -504,6 +509,7 @@ module LLVM
 		attach_function :LLVMBuildAggregateRet, [:pointer, :pointer, :uint], :pointer
 		attach_function :LLVMBuildBr, [:pointer, :pointer], :pointer
 		attach_function :LLVMBuildCondBr, [:pointer, :pointer, :pointer, :pointer], :pointer
+		attach_function :LLVMBuildIndirectBr, [:pointer, :pointer, :uint], :pointer
 		attach_function :LLVMBuildSwitch, [:pointer, :pointer, :pointer, :uint], :pointer
 		attach_function :LLVMBuildInvoke, [:pointer, :pointer, :pointer, :uint, :pointer, :pointer, :string], :pointer
 		attach_function :LLVMBuildUnwind, [:pointer], :pointer
@@ -513,27 +519,45 @@ module LLVM
 		attach_function :LLVMAddCase, [:pointer, :pointer, :pointer], :void
 
 		# Arithmetic
+		attach_function :LLVMBuildBinOp, [:pointer, :pointer, :pointer, :pointer, :string], :pointer
+		
 		attach_function :LLVMBuildAdd, [:pointer, :pointer, :pointer, :string], :pointer
-		attach_function :LLVMBuildNSWAdd, [:pointer, :pointer, :pointer, :string], :pointer
 		attach_function :LLVMBuildFAdd, [:pointer, :pointer, :pointer, :string], :pointer
+		attach_function :LLVMBuildNSWAdd, [:pointer, :pointer, :pointer, :string], :pointer
+		attach_function :LLVMBuildNUWAdd, [:pointer, :pointer, :pointer, :string], :pointer
+		
 		attach_function :LLVMBuildSub, [:pointer, :pointer, :pointer, :string], :pointer
 		attach_function :LLVMBuildFSub, [:pointer, :pointer, :pointer, :string], :pointer
+		attach_function :LLVMBuildNSWSub, [:pointer, :pointer, :pointer, :string], :pointer
+		attach_function :LLVMBuildNUWSub, [:pointer, :pointer, :pointer, :string], :pointer
+		
 		attach_function :LLVMBuildMul, [:pointer, :pointer, :pointer, :string], :pointer
 		attach_function :LLVMBuildFMul, [:pointer, :pointer, :pointer, :string], :pointer
+		attach_function :LLVMBuildNSWMul, [:pointer, :pointer, :pointer, :string], :pointer
+		attach_function :LLVMBuildNUWMul, [:pointer, :pointer, :pointer, :string], :pointer
+		
 		attach_function :LLVMBuildUDiv, [:pointer, :pointer, :pointer, :string], :pointer
 		attach_function :LLVMBuildSDiv, [:pointer, :pointer, :pointer, :string], :pointer
 		attach_function :LLVMBuildExactSDiv, [:pointer, :pointer, :pointer, :string], :pointer
 		attach_function :LLVMBuildFDiv, [:pointer, :pointer, :pointer, :string], :pointer
+		
 		attach_function :LLVMBuildURem, [:pointer, :pointer, :pointer, :string], :pointer
 		attach_function :LLVMBuildSRem, [:pointer, :pointer, :pointer, :string], :pointer
 		attach_function :LLVMBuildFRem, [:pointer, :pointer, :pointer, :string], :pointer
+		
 		attach_function :LLVMBuildShl, [:pointer, :pointer, :pointer, :string], :pointer
 		attach_function :LLVMBuildLShr, [:pointer, :pointer, :pointer, :string], :pointer
 		attach_function :LLVMBuildAShr, [:pointer, :pointer, :pointer, :string], :pointer
 		attach_function :LLVMBuildAnd, [:pointer, :pointer, :pointer, :string], :pointer
+		
 		attach_function :LLVMBuildOr, [:pointer, :pointer, :pointer, :string], :pointer
 		attach_function :LLVMBuildXor, [:pointer, :pointer, :pointer, :string], :pointer
+		
 		attach_function :LLVMBuildNeg, [:pointer, :pointer, :string], :pointer
+		attach_function :LLVMBuildFNeg, [:pointer, :pointer, :string], :pointer
+		attach_function :LLVMBuildNSWNeg, [:pointer, :pointer, :string], :pointer
+		attach_function :LLVMBuildNUWNeg, [:pointer, :pointer, :string], :pointer
+		
 		attach_function :LLVMBuildNot, [:pointer, :pointer, :string], :pointer
 
 		# Memory
@@ -551,6 +575,7 @@ module LLVM
 		attach_function :LLVMBuildGlobalStringPtr, [:pointer, :string, :string], :pointer
 
 		# Casts
+		attach_function :LLVMBuildCast, [:pointer, :pointer, :pointer, :pointer, :string], :pointer
 		attach_function :LLVMBuildTrunc, [:pointer, :pointer, :pointer, :string], :pointer
 		attach_function :LLVMBuildZExt, [:pointer, :pointer, :pointer, :string], :pointer
 		attach_function :LLVMBuildSExt, [:pointer, :pointer, :pointer, :string], :pointer

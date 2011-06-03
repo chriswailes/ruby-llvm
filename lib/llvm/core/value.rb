@@ -305,6 +305,16 @@ module LLVM
       self.class.from_ptr(C.LLVMConstNeg(self))
     end
 
+    # "No signed wrap" negation.
+    def nsw_neg
+      self.class.from_ptr(C.LLVMConstNSWNeg(self))
+    end
+    
+    # "No unsigned wrap" negation.
+    def nuw_neg
+      self.class.from_ptr(C.LLVMConstNUWNeg(self))
+    end
+
     # Boolean negation.
     def not
       self.class.from_ptr(C.LLVMConstNot(self))
@@ -320,10 +330,41 @@ module LLVM
     def nsw_add(rhs)
       self.class.from_ptr(C.LLVMConstNSWAdd(self, rhs))
     end
+    
+    # "No unsigned wrap" addition. See
+    # http://llvm.org/docs/LangRef.html#i_add for discusison.
+    def nuw_add(rhs)
+      self.class.from_ptr(C.LLVMConstNUWAdd(self, rhs))
+    end
+    
+    # Subtraction.
+    def -(rhs)
+      self.class.from_ptr(C.LLVMConstSub(self, rhs))
+    end
+
+    # "No signed wrap" subtraction.
+    def nsw_sub(rhs)
+      self.class.from_ptr(C.LLVMConstNSWSub(self, rhs))
+    end
+    
+    # "No unsigned wrap" subtraction.
+    def nuw_sub(rhs)
+      self.class.from_ptr(C.LLVMConstNUWSub(self, rhs))
+    end
 
     # Multiplication.
     def *(rhs)
       self.class.from_ptr(C.LLVMConstMul(self, rhs))
+    end
+
+    # "No signed wrap" Multiplication.
+    def nsw_sub(rhs)
+      self.class.from_ptr(C.LLVMConstNSWMul(self, rhs))
+    end
+    
+    # "No unsigned wrap" Multiplication.
+    def nuw_add(rhs)
+      self.class.from_ptr(C.LLVMConstNUWMul(self, rhs))
     end
 
     # Unsigned division.
