@@ -8,14 +8,49 @@ module LLVM
       C.LLVMAddAggressiveDCEPass(self)
     end
     
+    # @LLVMpass arg_promotion
+    def arg_promote!
+      C.LLVMAddArgumentPromotionPass(self)
+    end
+    
     # @LLVMpass simplifycfg
     def simplifycfg!
       C.LLVMAddCFGSimplificationPass(self)
     end
     
+    # @LLVMpass const_merge
+    def const_merge!
+      C.LLVMAddConstantMergePass(self)
+    end
+    
+    # @LLVMpass constprop
+    def constprop!
+      C.LLVMAddConstantPropagationPass(self)
+    end
+    
+    # @LLVMpass dae
+    def dae!
+      C.LLVMAddDeadArgEliminationPass(self)
+    end
+    
     # @LLVMpass dse
     def dse!
       C.LLVMAddDeadStoreEliminationPass(self)
+    end
+    
+    # @LLVMpass dte
+    def dte!
+      C.LLVMAddDeadTypeEliminationPass(self)
+    end
+    
+    # @LLVMpass reg2mem
+    def reg2mem!
+      C.LLVMAddDemoteMemoryToRegisterPass(self)
+    end
+    
+    # @LLVMpass global_opt
+    def global_opt!
+      C.LLVMAddGlobalOptimizerPass(self)
     end
     
     # @LLVMpass gvn
@@ -31,6 +66,11 @@ module LLVM
     # @LLVMpass instcombine
     def instcombine!
       C.LLVMAddInstructionCombiningPass(self)
+    end
+    
+    # @LLVMpass init
+    def init!
+      C.LLVMAddInternalizePass(self)
     end
     
     # @LLVMpass jump-threading
@@ -63,6 +103,11 @@ module LLVM
       C.LLVMAddLoopUnswitchPass(self)
     end
     
+    # @LLVMpass lsj
+    def lsj!
+      C.LLVMAddLowerSetJmpPass(self)
+    end
+    
     # @LLVMpass memcpyopt
     def memcpyopt!
       C.LLVMAddMemCpyOptPass(self)
@@ -71,6 +116,11 @@ module LLVM
     # @LLVMpass mem2reg
     def mem2reg!
       C.LLVMAddPromoteMemoryToRegisterPass(self)
+    end
+    
+    # @LLVMpass raise_alloc
+    def raise_alloc!
+      C.LLVMAddRaiseAllocationsPass(self)
     end
     
     # @LLVMpass reassociate
@@ -93,19 +143,24 @@ module LLVM
       C.LLVMAddSimplifyLibCallsPass(self)
     end
     
+    # @LLVMpass sdp
+    def sdp!
+      C.LLVMAddStripDeadPrototypesPass(self)
+    end
+    
+    # @LLVMpass sds
+    def sds!
+      C.LLVMAddStripSymbolsPass(self)
+    end
+    
     # @LLVMpass tailcallelim
     def tailcallelim!
       C.LLVMAddTailCallEliminationPass(self)
     end
     
-    # @LLVMpass constprop
-    def constprop!
-      C.LLVMAddConstantPropagationPass(self)
-    end
-    
-    # @LLVMpass reg2mem
-    def reg2mem!
-      C.LLVMAddDemoteMemoryToRegisterPass(self)
+    # @LLVMpass verifier
+    def verifier!
+      C.LLVMAddVerifierPass(self)
     end
   end
 end

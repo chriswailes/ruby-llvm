@@ -656,31 +656,46 @@ module LLVM
 		attach_function :LLVMAddTargetData, [:pointer, :pointer], :void
 		
 		# Inter-procedural Optimizations
-		attach_function :LLVMAddGlobalDCEPass, [:pointer], :void
+		attach_function :LLVMAddFunctionAttrsPass, [:pointer], :void
 		attach_function :LLVMAddFunctionInliningPass, [:pointer], :void
+		attach_function :LLVMAddGlobalDCEPass, [:pointer], :void
+		attach_function :LLVMAddIPConstantPropagationPass, [:pointer], :void
+		attach_function :LLVMAddIPSCCPPass, [:pointer], :void
+		attach_function :LLVMAddPruneEHPass, [:pointer], :void
 		
 		# Scalar Optimizations
 		attach_function :LLVMAddAggressiveDCEPass, [:pointer], :void
+		attach_function :LLVMAddArgumentPromotionPass, [:pointer], :void
 		attach_function :LLVMAddCFGSimplificationPass, [:pointer], :void
+		attach_function :LLVMAddConstantMergePass, [:pointer], :void
+		attach_function :LLVMAddConstantPropagationPass, [:pointer], :void
+		attach_function :LLVMAddDeadArgEliminationPass, [:pointer], :void
 		attach_function :LLVMAddDeadStoreEliminationPass, [:pointer], :void
+		attach_function :LLVMAddDeadTypeEliminationPass, [:pointer], :void
+		attach_function :LLVMAddDemoteMemoryToRegisterPass, [:pointer], :void
+		attach_function :LLVMAddGlobalOptimizerPass, [:pointer], :void
 		attach_function :LLVMAddGVNPass, [:pointer], :void
 		attach_function :LLVMAddIndVarSimplifyPass, [:pointer], :void
 		attach_function :LLVMAddInstructionCombiningPass, [:pointer], :void
+		attach_function :LLVMAddInternalizePass, [:pointer], :void
 		attach_function :LLVMAddJumpThreadingPass, [:pointer], :void
 		attach_function :LLVMAddLICMPass, [:pointer], :void
 		attach_function :LLVMAddLoopDeletionPass, [:pointer], :void
 		attach_function :LLVMAddLoopRotatePass, [:pointer], :void
 		attach_function :LLVMAddLoopUnrollPass, [:pointer], :void
 		attach_function :LLVMAddLoopUnswitchPass, [:pointer], :void
+		attach_function :LLVMAddLowerSetJmpPass, [:pointer], :void
 		attach_function :LLVMAddMemCpyOptPass, [:pointer], :void
 		attach_function :LLVMAddPromoteMemoryToRegisterPass, [:pointer], :void
+		attach_function :LLVMAddRaiseAllocationsPass, [:pointer], :void
 		attach_function :LLVMAddReassociatePass, [:pointer], :void
 		attach_function :LLVMAddSCCPPass, [:pointer], :void
 		attach_function :LLVMAddScalarReplAggregatesPass, [:pointer], :void
 		attach_function :LLVMAddSimplifyLibCallsPass, [:pointer], :void
+		attach_function :LLVMAddStripDeadPrototypesPass, [:pointer], :void
+		attach_function :LLVMAddStripSymbolsPass, [:pointer], :void
 		attach_function :LLVMAddTailCallEliminationPass, [:pointer], :void
-		attach_function :LLVMAddConstantPropagationPass, [:pointer], :void
-		attach_function :LLVMAddDemoteMemoryToRegisterPass, [:pointer], :void
+		attach_function :LLVMAddVerifierPass, [:pointer], :void
 		
 		# Bitcode
 		attach_function :LLVMParseBitcode, [:pointer, :buffer_out, :buffer_out], :int
