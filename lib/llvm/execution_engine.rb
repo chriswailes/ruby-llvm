@@ -3,6 +3,76 @@ require 'llvm/core'
 require 'llvm/analysis'
 
 module LLVM
+  def LLVM.init_arm
+    LLVM::C.LLVMInitializeARMTarget
+    LLVM::C.LLVMInitializeARMTargetInfo
+  end
+  
+  def LLVM.init_alpha
+    LLVM::C.LLVMInitializeAlphaTarget
+    LLVM::C.LLVMInitializeAlphaTargetInfo
+  end
+  
+  def LLVM.init_blackfin
+    LLVM::C.LLVMInitializeBlackfinTarget
+    LLVM::C.LLVMInitializeBlackfinTargetInfo
+  end
+  
+  def LLVM.init_c_backend
+    LLVM::C.LLVMInitializeCBackendTarget
+    LLVM::C.LLVMInitializeCBackendTargetInfo
+  end
+  
+  def LLVM.init_cell_spu
+    LLVM::C.LLVMInitializeCellSPUTarget
+    LLVM::C.LLVMInitializeCellSPUTargetInfo
+  end
+  
+  def LLVM.init_cpp_backend
+    LLVM::C.LLVMInitializeCppBackendTarget
+    LLVM::C.LLVMInitializeCppBackendTargetInfo
+  end
+  
+  def LLVM.init_mblaze
+    LLVM::C.LLVMInitializeMBlazeTarget
+    LLVM::C.LLVMInitializeMBlazeTargetInfo
+  end
+  
+  def LLVM.init_mips
+    LLVM::C.LLVMInitializeMipsTarget
+    LLVM::C.LLVMInitializeMipsTargetInfo
+  end
+  
+  def LLVM.init_mips
+    LLVM::C.LLVMInitializeMSP430Target
+    LLVM::C.LLVMInitializeMSP430TargetInfo
+  end
+  
+  def LLVM.init_ptx
+    LLVM::C.LLVMInitializePTXTarget
+    LLVM::C.LLVMInitializePTXTargetInfo
+  end
+  
+  def LLVM.init_ppc
+    LLVM::C.LLVMInitializePowerPCTarget
+    LLVM::C.LLVMInitializePowerPCTargetInfo
+  end
+  
+  def LLVM.init_sparc
+    LLVM::C.LLVMInitializeSparcTarget
+    LLVM::C.LLVMInitializeSparcTargetInfo
+  end
+  
+  def LLVM.init_sysz
+    LLVM::C.LLVMInitializeSystemZTarget
+    LLVM::C.LLVMInitializeSystemZTargetInfo
+  end
+  
+  def LLVM.init_xcore
+    LLVM::C.LLVMInitializeXCoreTarget
+    LLVM::C.LLVMInitializeXCoreTargetInfo
+  end
+  
   def LLVM.init_x86
     LLVM::C.LLVMInitializeX86Target
     LLVM::C.LLVMInitializeX86TargetInfo

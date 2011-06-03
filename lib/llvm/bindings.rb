@@ -649,6 +649,48 @@ module LLVM
 		attach_function :LLVMGetPointerToGlobal, [:pointer, :pointer], :pointer
 		
 		# Target Initialization
+		attach_function :LLVMInitializeARMTarget, [], :void
+		attach_function :LLVMInitializeARMTargetInfo, [], :void
+		
+		attach_function :LLVMInitializeAlphaTarget, [], :void
+		attach_function :LLVMInitializeAlphaTargetInfo, [], :void
+		
+		attach_function :LLVMInitializeBlackfinTarget, [], :void
+		attach_function :LLVMInitializeBlackfinTargetInfo, [], :void
+		
+		attach_function :LLVMInitializeCBackendTarget, [], :void
+		attach_function :LLVMInitializeCBackendTargetInfo, [], :void
+		
+		attach_function :LLVMInitializeCellSPUTarget, [], :void
+		attach_function :LLVMInitializeCellSPUTargetInfo, [], :void
+		
+		attach_function :LLVMInitializeCppBackendTarget, [], :void
+		attach_function :LLVMInitializeCppBackendTargetInfo, [], :void
+		
+		attach_function :LLVMInitializeMBlazeTarget, [], :void
+		attach_function :LLVMInitializeMBlazeTargetInfo, [], :void
+		
+		attach_function :LLVMInitializeMipsTarget, [], :void
+		attach_function :LLVMInitializeMipsTargetInfo, [], :void
+		
+		attach_function :LLVMInitializeMSP430Target, [], :void
+		attach_function :LLVMInitializeMSP430TargetInfo, [], :void
+		
+		attach_function :LLVMInitializePTXTarget, [], :void
+		attach_function :LLVMInitializePTXTargetInfo, [], :void
+		
+		attach_function :LLVMInitializePowerPCTarget, [], :void
+		attach_function :LLVMInitializePowerPCTargetInfo, [], :void
+		
+		attach_function :LLVMInitializeSparcTarget, [], :void
+		attach_function :LLVMInitializeSparcTargetInfo, [], :void
+		
+		attach_function :LLVMInitializeSystemZTarget, [], :void
+		attach_function :LLVMInitializeSystemZTargetInfo, [], :void
+		
+		attach_function :LLVMInitializeXCoreTarget, [], :void
+		attach_function :LLVMInitializeXCoreTargetInfo, [], :void
+		
 		attach_function :LLVMInitializeX86TargetInfo, [], :void
 		attach_function :LLVMInitializeX86Target, [], :void
 		
@@ -702,5 +744,5 @@ module LLVM
 		attach_function :LLVMParseBitcodeInContext, [:pointer, :pointer, :buffer_out, :buffer_out], :int
 		attach_function :LLVMWriteBitcodeToFile, [:pointer, :string], :int
 		attach_function :LLVMWriteBitcodeToFD, [:pointer, :int, :int, :int], :int
-	end	
+	end
 end
