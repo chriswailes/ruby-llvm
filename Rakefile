@@ -41,6 +41,8 @@ def spec
     
     s.extra_rdoc_files = 'README.rdoc'
     
+    s.extensions << 'ext/LLVM-EB/extconf.rb'
+    
     s.author = "Jeremy Voorhis"
     s.email = "jvoorhis@gmail.com"
     s.homepage = "http://github.com/jvoorhis/ruby-llvm"

@@ -780,7 +780,7 @@ module LLVM
     #   :ord   - ordered
     #   :uno   - unordered: isnan(X) | isnan(Y)
     #   :oeq   - ordered and equal to
-    #   :oeq   - unordered and equal to
+    #   :ueq   - unordered and equal to
     #   :one   - ordered and not equal to
     #   :one   - unordered and not equal to
     #   :ogt   - ordered and greater than
